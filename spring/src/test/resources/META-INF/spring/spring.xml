@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:hong="http://code.hongtech.com/schema/people"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.hongtech.com/schema/people
+       http://code.hongtech.com/schema/people.xsd">
+    <hong:people id="hongsource" name="蔡宏伟"/>
+</beans>
