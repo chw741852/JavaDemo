@@ -30,12 +30,13 @@ public class RpcFramework {
         ServerSocket serverSocket = new ServerSocket(port);
         //noinspection InfiniteLoopStatement
         for (;;) {
+            final Socket socket = serverSocket.accept();
             try {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            try (Socket socket = serverSocket.accept()) {
+                            try {
                                 try (ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream())) {
                                     String methodName = inputStream.readUTF();
                                     Class<?>[] parameterTypes = (Class<?>[]) inputStream.readObject();
@@ -52,6 +53,8 @@ public class RpcFramework {
                                         outputStream.close();
                                     }
                                 }
+                            } finally {
+                                socket.close();
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -88,7 +91,7 @@ public class RpcFramework {
         return (T) Proxy.newProxyInstance(interfaceClass.getClassLoader(), new Class<?>[]{interfaceClass}, new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-
+                System.out.println("invoke.........");
                 try (Socket socket = new Socket(host, port)) {
                     try (ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream())) {
                         outputStream.writeUTF(method.getName());
