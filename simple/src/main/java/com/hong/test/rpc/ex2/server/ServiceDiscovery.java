@@ -25,7 +25,7 @@ public class ServiceDiscovery {
     private String registryAddress;
 
     public void init() {
-        logger.debug("RPC服务初始化...");
+        logger.info("RPC服务初始化...");
         ZooKeeper zk = connectServer();
         if (zk != null) {
             watchNode(zk);
@@ -60,7 +60,7 @@ public class ServiceDiscovery {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        logger.debug("zk是：{0}", zk);
+        logger.info("zk是：{}", zk);
         return zk;
     }
 
@@ -74,10 +74,10 @@ public class ServiceDiscovery {
                     }
                 }
             });
-            logger.debug("zk节点有：{0}", nodeList);
+            logger.info("zk节点有：{0}", nodeList);
             List<String> dataList = new ArrayList<>();
             for (String node : nodeList) {
-                byte[] bytes = zk.getData(Constant.ROOT + node, false, null);
+                byte[] bytes = zk.getData(Constant.DEFAULT_ZK_REGISTRY_PATH + node, false, null);
                 dataList.add(new String(bytes));
             }
             this.dataList = dataList;

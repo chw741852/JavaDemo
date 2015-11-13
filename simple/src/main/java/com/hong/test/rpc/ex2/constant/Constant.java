@@ -6,7 +6,7 @@ package com.hong.test.rpc.ex2.constant;
 public interface Constant {
     int DEFAULT_ZK_SESSION_TIMEOUT = 5000;
 
-    String DEFAULT_ZK_REGISTRY_PATH = "/";
+    String DEFAULT_ZK_REGISTRY_PATH = "/rpc/";
 
     String ROOT = "/";
 }

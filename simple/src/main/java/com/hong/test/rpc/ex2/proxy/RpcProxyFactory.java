@@ -25,7 +25,7 @@ public class RpcProxyFactory {
         return (T) Proxy.newProxyInstance(interfaceClass.getClassLoader(), new Class<?>[]{interfaceClass}, new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                logger.debug("创建代理请求：{0}", method.getName());
+                logger.info("创建代理请求：{0}", method.getName());
                 RpcRequest request = new RpcRequest();
                 request.setRequestId(UUID.randomUUID().toString());
                 request.setClassName(method.getDeclaringClass().getName());

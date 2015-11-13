@@ -36,7 +36,7 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         // 获取所有带RpcService注解的spring bean
         Map<String, Object> serviceBeanMap = applicationContext.getBeansWithAnnotation(RpcService.class);
-        logger.debug("获取所有rpc服务有：{0}", serviceBeanMap);
+        logger.info("获取所有rpc服务有：{}", serviceBeanMap);
         if (MapUtils.isNotEmpty(serviceBeanMap)) {
             for (Object serviceBean : serviceBeanMap.values()) {
                 String interfaceName = serviceBean.getClass().getAnnotation(RpcService.class).inf().getName();

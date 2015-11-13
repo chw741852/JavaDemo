@@ -5,7 +5,6 @@ import org.apache.zookeeper.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -26,7 +25,7 @@ public class ServiceRegistry {
     private String registerAddress;
 
     public void register(String data) {
-        logger.debug("注册服务：", data);
+        logger.info("注册服务：{}", data);
         if (data != null) {
             ZooKeeper zk = connectServer();
             if (zk != null)
@@ -51,7 +50,7 @@ public class ServiceRegistry {
              * 指定节点创建策略
              */
             String createResult = zk.create(registerPath, bytes, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
-            logger.debug("创建结果：" + createResult);
+            logger.info("创建结果：" + createResult);
         } catch (KeeperException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -65,9 +64,9 @@ public class ServiceRegistry {
      */
     private ZooKeeper connectServer() {
         ZooKeeper zk = null;
-        logger.debug("创建zk，参数是：address: " + registerAddress + "，timeout: " + timeout);
 
         try {
+            logger.info("创建zk，参数是：address: " + registerAddress + "，timeout: " + timeout);
             zk = new ZooKeeper(registerAddress, timeout, new Watcher() {
                 @Override
                 public void process(WatchedEvent watchedEvent) {
