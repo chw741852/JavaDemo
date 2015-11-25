@@ -8,6 +8,7 @@
     <modules>
         <module>simple</module>
         <module>spring</module>
+        <module>design_pattern</module>
     </modules>
     <packaging>pom</packaging>
 
