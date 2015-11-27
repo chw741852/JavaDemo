@@ -38,16 +38,20 @@ public class Client {
         DateFormat format = DateFormat.getDateInstance(DateFormat.DEFAULT, Locale.ENGLISH);
 
         BeanA b = new BeanA();
+        BeanB beanB = new BeanB();
+        beanB.setName("James");
         b.name = "cai";
         b.age = 20;
         b.birthday = new Date();
         b.strs = new String[] {"a", "b"};
+        b.setBeanB(beanB);
 
         BeanA c = (BeanA) b.clone();
         c.name = "caihongwei";
         c.age = 30;
         c.birthday = format.parse("Nov 11, 2005");
         c.strs = new String[] {"c", "d"};
+        c.beanB.setName("Tom");
 
         System.out.println();
         System.out.println("b.name=" + b.name);
@@ -56,5 +60,7 @@ public class Client {
         System.out.println("c.strs=" + c.strs[0] + "," + c.strs[1]);
         System.out.println("b.birthday=" + b.birthday);
         System.out.println("c.birthday=" + c.birthday);
+        System.out.println("b.beanB.name=" + b.beanB.getName());
+        System.out.println("c.beanB.name=" + c.beanB.getName());
     }
 }

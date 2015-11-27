@@ -10,6 +10,7 @@ public class BeanA implements Cloneable {
     protected int age;
     protected Date birthday;
     protected String[] strs;
+    protected BeanB beanB;
 
     public String getName() {
         return name;
@@ -43,9 +44,20 @@ public class BeanA implements Cloneable {
         this.strs = strs;
     }
 
+    public BeanB getBeanB() {
+        return beanB;
+    }
+
+    public void setBeanB(BeanB beanB) {
+        this.beanB = beanB;
+    }
+
     @Override
     public Object clone() throws CloneNotSupportedException {
         BeanA a = (BeanA) super.clone();
+
+        // 因为beanB是自定义对象类型，“浅复制”只是复制了beanB的引用；所以这里需要“深复制”
+        a.beanB = (BeanB) beanB.clone();
         return a;
     }
 }
