@@ -2,7 +2,7 @@ package com.hong.test.thread.synchronizeds;
 
 /**
  * Created by cai on 2015/9/8 10:26.
- * ½¨Á¢Èı¸öÏß³Ì£¬AÏß³Ì´òÓ¡10´ÎA£¬BÏß³Ì´òÓ¡10´ÎB,CÏß³Ì´òÓ¡10´ÎC£¬ÒªÇóÏß³ÌÍ¬Ê±ÔËĞĞ£¬½»Ìæ´òÓ¡10´ÎABC¡£
+ * å»ºç«‹ä¸‰ä¸ªçº¿ç¨‹ï¼ŒAçº¿ç¨‹æ‰“å°10æ¬¡Aï¼ŒBçº¿ç¨‹æ‰“å°10æ¬¡B,Cçº¿ç¨‹æ‰“å°10æ¬¡Cï¼Œè¦æ±‚çº¿ç¨‹åŒæ—¶è¿è¡Œï¼Œäº¤æ›¿æ‰“å°10æ¬¡ABCã€‚
  */
 public class MyThread implements Runnable {
     private String name;
