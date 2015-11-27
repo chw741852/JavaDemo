@@ -64,7 +64,7 @@ public class ServiceDiscovery {
         return zk;
     }
 
-    private void watchNode(ZooKeeper zk) {
+    private void watchNode(final ZooKeeper zk) {
         try {
             List<String> nodeList = zk.getChildren(Constant.ROOT, new Watcher() {
                 @Override
