@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
  * Created by Hongwei on 2015/11/21.
  */
 public class WithThreadLocal implements Runnable {
-    private static ThreadLocal<Date> startDate = new ThreadLocal<Date>() {
+    private static final ThreadLocal<Date> startDate = new ThreadLocal<Date>() {
         protected Date initialValue() {
             return new Date();
         }
@@ -26,16 +26,12 @@ public class WithThreadLocal implements Runnable {
                 + " " + startDate.get());
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         WithThreadLocal task = new WithThreadLocal();
         for (int i = 0; i < 10; i++) {
             Thread thread = new Thread(task);
             thread.start();
-            try {
-                TimeUnit.SECONDS.sleep(2);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            TimeUnit.SECONDS.sleep(2);
         }
     }
 }

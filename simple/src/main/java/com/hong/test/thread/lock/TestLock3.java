@@ -18,7 +18,7 @@ public class TestLock3 extends Thread {
     }
 
     /**
-     * ÒòÎªÊÇ¾²Ì¬·½·¨£¬Ö»»áÓĞÒ»¸öÊµÀı£¬ËùÒÔËøÆğ×÷ÓÃ
+     * å› ä¸ºæ˜¯é™æ€æ–¹æ³•ï¼Œåªä¼šæœ‰ä¸€ä¸ªå®ä¾‹ï¼Œæ‰€ä»¥é”èµ·ä½œç”¨
      * @param no
      */
     private static synchronized void abc(int no) {

@@ -14,7 +14,7 @@ public class TestLock2 extends Thread {
 
     public static void main(String[] args) throws InterruptedException {
         /*
-         * 应为所有实例的lock指向的是同一个内存，所以此处锁起作用了
+         * 鍥犱负鎵�鏈夊疄渚嬬殑lock鎸囧悜鐨勬槸鍚屼竴涓唴瀛橈紝鎵�浠ユ澶勯攣璧蜂綔鐢ㄤ簡
          */
         String lock = "lock";
         for (int i = 1; i < 10; i++) {
