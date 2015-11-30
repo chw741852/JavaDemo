@@ -42,11 +42,27 @@ public class Heapsort {
                 child++;
             if (tmp.compareTo(a[child]) < 0)
                 a[i] = a[child];
+            else
+                break;
         }
         a[i] = tmp;
     }
 
     private static int leftChild(int i) {
         return 2 * i + 1;
+    }
+
+    public static void main(String[] args) {
+        ComparableBean[] array = new ComparableBean[]{
+                new ComparableBean(5),
+                new ComparableBean(3),
+                new ComparableBean(1),
+                new ComparableBean(4),
+                new ComparableBean(4)
+        };
+        Heapsort.heapsort(array);
+        for (ComparableBean bean : array) {
+            System.out.println(bean.getNum());
+        }
     }
 }

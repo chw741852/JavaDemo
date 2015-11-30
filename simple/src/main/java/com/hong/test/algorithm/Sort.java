@@ -93,4 +93,21 @@ public class Sort {
             }
         }
     }
+
+    public static void main(String[] args) {
+        ComparableBean[] array = new ComparableBean[]{
+                new ComparableBean(5),
+                new ComparableBean(3),
+                new ComparableBean(1),
+                new ComparableBean(4),
+                new ComparableBean(4)
+        };
+//        Sort.bubblingSort(array);
+//        Sort.choiceSort(array);
+//        Sort.insertionSort(array);
+//        Sort.shellSort(array);
+        for (ComparableBean bean : array) {
+            System.out.println(bean.getNum());
+        }
+    }
 }
