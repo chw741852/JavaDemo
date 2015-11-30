@@ -3,7 +3,7 @@ package com.hong.test.algorithm;
 /**
  * 堆排序
  * 通过下滤得到最小堆根，将其与最后的元素调换并堆大小逻辑减1，再次下滤。
- * 时间复杂度 O(N*logN) 最坏时间略大
+ * 时间复杂度 O(N*logN)
  * Created by Hongwei on 2015/11/28.
  */
 public class Heapsort {
