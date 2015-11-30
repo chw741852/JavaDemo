@@ -29,25 +29,6 @@ public class Sort {
     }
 
     /**
-     * 插入排序（非稳定排序）
-     * 每次从无序表中取出第一个元素，把它插入到有序表的合适位置，使有序表仍然有序。
-     * 时间复杂度 O(N^2)
-     *
-     * @param array 要排序的数组
-     * @param <T>   泛型
-     */
-    public static <T extends Comparable<? super T>>
-    void insertionSort(T[] array) {
-        int j;
-        for (int p = 1; p < array.length; p++) {
-            T tmp = array[p];
-            for (j = p; j > 0 && tmp.compareTo(array[j - 1]) < 0; j--)
-                array[j] = array[j - 1];
-            array[j] = tmp;
-        }
-    }
-
-    /**
      * 选择排序
      * 每一趟从待排序的数据元素中选出最小（或最大）的一个元素，
      * 顺序放在已排好序的数列的最后，直到全部待排序的数据元素排完。
@@ -73,8 +54,30 @@ public class Sort {
     }
 
     /**
-     * 希尔排序
+     * 插入排序（非稳定排序）
+     * 每次从无序表中取出第一个元素，把它插入到有序表的合适位置，使有序表仍然有序。
+     * 原序列越接近有序效率越高
+     * 时间复杂度 O(N^2)
      *
+     * @param array 要排序的数组
+     * @param <T>   泛型
+     */
+    public static <T extends Comparable<? super T>>
+    void insertionSort(T[] array) {
+        int j;
+        for (int p = 1; p < array.length; p++) {
+            T tmp = array[p];
+            for (j = p; j > 0 && tmp.compareTo(array[j - 1]) < 0; j--)
+                array[j] = array[j - 1];
+            array[j] = tmp;
+        }
+    }
+
+    /**
+     * 希尔排序
+     * 先将整个待排元素序列分割成若干个子序列（由相隔某个“增量”的元素组成的）分别进行直接插入排序，
+     * 然后依次缩减增量再进行排序，待整个序列中的元素基本有序（增量足够小）时，再对全体元素进行一次直接插入排序。
+     * 因为直接插入排序在元素基本有序的情况下（接近最好情况），效率是很高的，因此希尔排序在时间效率上比前两种方法有较大提高。
      * @param array
      * @param <T>
      */
