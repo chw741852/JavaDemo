@@ -1,4 +1,4 @@
-package com.hong.test.thread.lock;
+package com.hong.concurrent.lock;
 
 /**
  * Created by cai on 2015/9/6 17:36.

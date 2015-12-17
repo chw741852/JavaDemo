@@ -1,4 +1,4 @@
-package com.hong.test.thread;
+package com.hong.concurrent;
 
 public class ProduceConsume {
 

@@ -1,4 +1,4 @@
-package com.hong.test.thread.synchronizeds;
+package com.hong.concurrent.synchronizeds;
 
 /**
  * Created by cai on 2015/9/8 10:26.

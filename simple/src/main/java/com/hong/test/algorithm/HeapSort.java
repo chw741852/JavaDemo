@@ -6,9 +6,8 @@ package com.hong.test.algorithm;
  * 时间复杂度 O(N*logN)
  * Created by Hongwei on 2015/11/28.
  */
-public class Heapsort {
-    public static <T extends Comparable<? super T>>
-    void heapsort(T[] a) {
+public class HeapSort {
+    public static <T extends Comparable<? super T>> void heapsort(T[] a) {
         for (int i = a.length / 2; i >= 0; i--) {
             // 构建堆
             percDown(a, i, a.length);
@@ -60,7 +59,8 @@ public class Heapsort {
                 new ComparableBean(4),
                 new ComparableBean(4)
         };
-        Heapsort.heapsort(array);
+        //noinspection unchecked
+        heapsort(array);
         for (ComparableBean bean : array) {
             System.out.println(bean.getNum());
         }

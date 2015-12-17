@@ -1,4 +1,4 @@
-package com.hong.test.thread.threadlocal;
+package com.hong.concurrent.threadlocal;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
