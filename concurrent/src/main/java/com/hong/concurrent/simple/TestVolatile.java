@@ -33,9 +33,9 @@ public class TestVolatile {
 
         System.out.println("atomicInt = " + atomicInt); // 原子性
         /*
-         *  1、最终结果不保证1000，所以volatile不能保证原子性
+         *  1、最终结果跟预期不一样，所以volatile不能保证原子性
          *   即：在read load之后，如果主内存count变量发生修改之后，线程工作内存中的值由于已经加载，不会产生对应的变化
-         *  2、但是它是对多线程可见性的；
+         *  2、但是它是对多线程可见性的
          *   即：jvm虚拟机只是保证从主内存加载到线程工作内存的值是最新的
          */
         System.out.println("count = " + count);
