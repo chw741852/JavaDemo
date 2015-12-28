@@ -1,4 +1,4 @@
-package com.hong.concurrent.atomicclass;
+package com.hong.concurrent.simple;
 
 import java.util.concurrent.atomic.AtomicLong;
 
