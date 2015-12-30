@@ -17,14 +17,11 @@ public class TestVolatile {
 
     public static void main(String[] args) throws InterruptedException {
         for (int i = 0; i < 1000; i++) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        inc();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+            new Thread(() -> {
+                try {
+                    inc();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }).start();
         }
