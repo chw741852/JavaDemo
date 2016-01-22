@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <property name="log_pattern">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</property>
+        <!-- 日志文件大小 -->
+        <property name="file_size">10MB</property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- 输出debug及以上级别的信息（onMatch），其他拒绝（onMismatch） -->
+            <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${log_pattern}"/>
+        </Console>
+
+        <!-- 输出trace及以上级别的日志到指定文件，最大10M，warn、error除外 -->
+        <RollingFile name="app_trace" fileName="simple/target/logs/app_trace.log" filePattern="logs/app_trace-%d{yyyy-MM-dd}-%i.log.gz">
+            <SizeBasedTriggeringPolicy size="${file_size}"/>
+            <PatternLayout pattern="${log_pattern}"/>
+            <Filters>
+                <!-- 拒绝输出warn及以上 -->
+                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <!-- 输出trace及以上 -->
+                <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </RollingFile>
+
+        <!-- 输出warn及以上级别的日志到指定文件 -->
+        <RollingFile name="app_warn" fileName="simple/target/logs/app_warn.log" filePattern="logs/app_warn-%d{yyyy-MM-dd}-%i.log.gz">
+            <SizeBasedTriggeringPolicy size="${file_size}"/>
+            <PatternLayout pattern="${log_pattern}"/>
+            <!-- 输出warn及以上 -->
+            <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+        </RollingFile>
+    </Appenders>
+    <loggers>
+        <!-- 指定Bar类中输出级别为trace，additivity防止重复输出-->
+        <Logger name="com.hong.test.log4j2.foo.Bar" level="trace" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="error">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="app_trace"/>
+            <AppenderRef ref="app_warn"/>
+        </Root>
+    </loggers>
+</Configuration>
