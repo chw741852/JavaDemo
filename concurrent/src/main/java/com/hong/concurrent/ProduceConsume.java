@@ -1,22 +1,35 @@
 package com.hong.concurrent;
 
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
+
 public class ProduceConsume {
 
     public static void main(String[] args) {
-        SyncStack ss = new SyncStack();//建造一个装馒头的框  
-        Producer p = new Producer(ss);//新建一个生产者，使之持有框  
-        Consume c = new Consume(ss);//新建一个消费者，使之持有同一个框  
-        Thread tp = new Thread(p);//新建一个生产者线程  
-        Thread tc = new Thread(c);//新建一个消费者线程  
-        tp.start();//启动生产者线程  
-        tc.start();//启动消费者线程  
+//        SyncStack ss = new SyncStack();//建造一个装馒头的框
+//        Producer p = new Producer(ss);//新建一个生产者，使之持有框
+//        Consume c = new Consume(ss);//新建一个消费者，使之持有同一个框
+//        Thread tp = new Thread(p);//新建一个生产者线程
+//        Thread tc = new Thread(c);//新建一个消费者线程
+//        tp.start();//启动生产者线程
+//        tc.start();//启动消费者线程
+
+        BlockingQueue<SteamBread> blockingQueue = new LinkedBlockingDeque<>(20);
+        for (int i = 0; i < 3; i++) {
+            new Thread(new Producer2(String.valueOf(i), blockingQueue)).start();
+        }
+
+        for (int i = 0; i < 2; i++) {
+            new Thread(new Consume2(String.valueOf(i), blockingQueue)).start();
+        }
     }
 
 }
 
 //馒头类  
 class SteamBread {
-    int id;//馒头编号  
+    int id;//馒头编号
+    String name;    // 馒头名称
 
     SteamBread(int id) {
         this.id = id;
@@ -101,6 +114,60 @@ class Consume implements Runnable {
             System.out.println("消费了" + stb);
             try {
                 Thread.sleep(100);//每消费一个馒头，睡觉100毫秒。即生产多个，消费一个
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+/**
+ * 利用blocking query实现的生产者
+ */
+class Producer2 implements Runnable {
+    private final String name;
+    private final BlockingQueue<SteamBread> blockingQueue;
+
+    public Producer2(String name, BlockingQueue<SteamBread> blockingQueue) {
+        this.name = name;
+        this.blockingQueue = blockingQueue;
+    }
+
+    @Override
+    public void run() {
+        String producerName = "producer-" + name;
+        for (int i = 0; i < 20; i++) {
+            SteamBread steamBread = new SteamBread(i);
+            steamBread.name = producerName + "-" + i;
+            try {
+                blockingQueue.add(steamBread);
+                System.out.println("【" + producerName + "】 生产了面包【" + i + "】");
+                Thread.sleep(100);
+            } catch (IllegalStateException e) {
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+class Consume2 implements Runnable {
+    private final String name;
+    private final BlockingQueue<SteamBread> blockingQueue;
+
+    Consume2(String name, BlockingQueue<SteamBread> blockingQueue) {
+        this.name = name;
+        this.blockingQueue = blockingQueue;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                SteamBread steamBread = blockingQueue.take();
+                System.out.println("【consume2-" + name + "】 消费了面包【" + steamBread.name + "】");
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
