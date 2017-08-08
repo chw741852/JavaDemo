@@ -11,6 +11,7 @@ public class Main {
         SelectSort.sort(numbers.clone());
         InsertSort.sort(numbers.clone());
         ShellSort.sort(numbers.clone());
+        MergeSort.sort(numbers.clone());
 
         System.out.print("原始数组：");
         for (int number : numbers) {
