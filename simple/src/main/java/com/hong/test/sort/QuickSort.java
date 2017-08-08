@@ -1,18 +1,19 @@
 package com.hong.test.sort;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-
 /**
  * 快速排序
+ * 时间复杂度 O(n*log2n)
+ * 空间复杂度 O(log2n)~O(n)
  * Created by caihongwei on 06/08/2017 10:46 PM.
  */
 public class QuickSort {
     public static void sort(int[] numbers) {
-        int[] nums = numbers.clone();
-        quickSort(nums, 0, nums.length - 1);
-        for (int number : nums) {
+        quickSort(numbers, 0, numbers.length - 1);
+        System.out.print("快速排序：");
+        for (int number : numbers) {
             System.out.print(number + ",");
         }
+        System.out.println();
     }
 
     private static void quickSort(int[] numbers, int low, int high) {
