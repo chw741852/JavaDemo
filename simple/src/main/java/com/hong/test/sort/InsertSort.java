@@ -1,7 +1,5 @@
 package com.hong.test.sort;
 
-import com.hong.test.proxy.dynamic.jdk.JdkProxy;
-
 /**
  * 插入排序
  * 从第一个元素开始，该元素可以认为已经被排序

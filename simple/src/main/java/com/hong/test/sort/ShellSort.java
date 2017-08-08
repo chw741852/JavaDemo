@@ -10,6 +10,9 @@ package com.hong.test.sort;
  * 此例子是按照从大到小排列，所以大的会排在前面，第一次排序后数组为9, 2, 8, 5, 1, 3，4
  * 第一次后increment的值变为3/2=1，此时对数组进行插入排序，实现数组从大到小排
  *
+ * 时间复杂度 O(n²)
+ * 空间复杂度 O(1)
+ *
  * Created by caihongwei on 08/08/2017 10:41 AM.
  */
 public class ShellSort {
