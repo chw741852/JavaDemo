@@ -114,5 +114,9 @@ public class TestStream {
         t3();
         t4();
         t5();
+
+        Optional<Integer> counts = Optional.ofNullable(null);
+        int count = counts.map(words -> words + 1).orElse(1);
+        System.out.println(count);
     }
 }
