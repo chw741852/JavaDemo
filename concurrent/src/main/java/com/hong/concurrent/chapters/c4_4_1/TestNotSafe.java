@@ -5,7 +5,7 @@ package com.hong.concurrent.chapters.c4_4_1;
  */
 public class TestNotSafe implements Runnable {
     public static void main(String[] args) {
-        ListHelper listHelper = new ListHelper();
+        ListHelper<Integer> listHelper = new ListHelper<>();
 
         TestNotSafe m1 = new TestNotSafe(listHelper, 0);
         TestNotSafe m2 = new TestNotSafe(listHelper, 1);
