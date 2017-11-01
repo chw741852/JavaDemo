@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Java堆内存溢出异常测试
  * 分配堆内存大小为20M，且不能自动扩展（即：将堆的最小值-Xms和最大值-Xms设置为一样大）
- * VM Args: -Xms20m -Xmx20m -XX:+HeapDumpOnOutOfMemoryError -XX:H
+ * VM Args: -Xms20m -Xmx20m -XX:+HeapDumpOnOutOfMemoryError
  *
  * Created by caihongwei on 17/10/2017 8:13 PM.
  */
