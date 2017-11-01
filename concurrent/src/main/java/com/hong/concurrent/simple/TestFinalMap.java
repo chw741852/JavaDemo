@@ -17,7 +17,7 @@ public class TestFinalMap {
 
     public TestFinalMap(Map<String, String> locations) {
         this.locations = new ConcurrentHashMap<>(locations);
-        this.unmodifiableMap = Collections.unmodifiableMap(this.locations); // 不可变map的到了可变map的引用
+        this.unmodifiableMap = Collections.unmodifiableMap(this.locations); // 不可变map得到了可变map的引用
     }
 
     public Map<String, String> getLocations() {

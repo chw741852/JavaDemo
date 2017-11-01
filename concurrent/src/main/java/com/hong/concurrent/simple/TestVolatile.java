@@ -26,7 +26,7 @@ public class TestVolatile {
             }).start();
         }
 
-        Thread.sleep(10);
+        Thread.sleep(100);
 
         System.out.println("atomicInt = " + atomicInt); // 原子性
         /*
