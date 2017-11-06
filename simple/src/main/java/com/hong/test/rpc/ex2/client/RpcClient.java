@@ -25,7 +25,7 @@ public class RpcClient extends SimpleChannelInboundHandler<RpcResponse> {
     }
 
     @Override
-    public void messageReceived(ChannelHandlerContext ctx, RpcResponse response) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, RpcResponse response) throws Exception {
         this.response = response;
         synchronized (obj) {
             obj.notifyAll();    // 收到响应，唤醒线程

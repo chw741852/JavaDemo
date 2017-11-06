@@ -39,7 +39,7 @@ public class RpcHandler extends SimpleChannelInboundHandler<RpcRequest> {
     }
 
     @Override
-    public void messageReceived(ChannelHandlerContext ctx, RpcRequest request) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, RpcRequest request) throws Exception {
         RpcResponse response = new RpcResponse();
         response.setRequestId(request.getRequestId());
         System.out.println("处理请求：" + request);
