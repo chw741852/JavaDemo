@@ -1,0 +1,8 @@
+syntax = "proto3";
+package com.hong.test.protobuf;
+
+import "Person.proto";
+
+message AddressBook {
+    repeated Person person = 1;
+}
