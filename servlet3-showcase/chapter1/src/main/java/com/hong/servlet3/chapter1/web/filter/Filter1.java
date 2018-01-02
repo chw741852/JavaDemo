@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * Created by caihongwei on 29/12/2017 4:22 PM.
  */
-@WebFilter(filterName = "filter1", urlPatterns = "/*", dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
+//@WebFilter(filterName = "filter1", urlPatterns = "/*", dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
 public class Filter1 implements Filter {
 
     @Override
