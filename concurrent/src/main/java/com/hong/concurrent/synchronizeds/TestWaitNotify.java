@@ -3,6 +3,10 @@ package com.hong.concurrent.synchronizeds;
 /**
  * Created by cai on 2015/9/9 10:00.
  * 测试wait notify
+ * 调用一个Object的wait与notify/notifyAll的时候，必须保证调用代码对该Object是同步的，
+ * 也就是说必须在作用等同于synchronized(obj){...}的内部才能够去调用obj的wait与notify/notifyAll三个方法，
+ * 否则就会报错：
+ * java.lang.IllegalMonitorStateException:current thread not owner
  */
 public class TestWaitNotify implements Runnable {
     private String s;
@@ -25,11 +29,11 @@ public class TestWaitNotify implements Runnable {
                     e.printStackTrace();
                 }
 
-                lock.notify();
+                lock.notify();  // 随机唤醒一个等待的线程，唤醒的线程又可以去竞争锁；只有当前锁(lock)才能执行唤醒，且只能唤醒当前锁的线程
 
                 try {
                     if (i < 10)
-                        lock.wait();
+                        lock.wait();    // 线程等待，不去竞争锁
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

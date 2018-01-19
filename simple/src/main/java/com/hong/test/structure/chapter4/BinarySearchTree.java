@@ -4,12 +4,12 @@ import java.nio.BufferUnderflowException;
 
 /**
  * Created by Hongwei on 2015/9/25.
- * ¶ş²æÊ÷²éÑ¯Ê÷
+ * äºŒå‰æ ‘æŸ¥è¯¢æ ‘
  */
 public class BinarySearchTree {
     /**
-     * ÄÚ²¿Àà
-     * ¶ş²æÊ÷½Úµã
+     * å†…éƒ¨ç±»
+     * äºŒå‰æ ‘èŠ‚ç‚¹
      */
     private static class BinaryNode<T> {
         T element;
