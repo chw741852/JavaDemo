@@ -23,18 +23,18 @@ public class TestInterrupt {
         Thread thread = new Thread(myThread);
         thread.start();
         Thread.sleep(1000);
-        thread.interrupt();
-        System.out.println("线程是否中断1：" + Thread.interrupted());
+        thread.interrupt(); // 中断线程
         System.out.println("线程是否中断2：" + thread.isInterrupted());
+        System.out.println("线程是否中断1：" + Thread.interrupted());
 
-        int h = myThread.hashCode();
-        System.out.println(8 >>> 2);
-        System.out.println(8 ^ 2);
-        System.out.println(h);
-        System.out.println(h >>> 16);
-        System.out.println(h ^ (h >>> 16));
-        int HASH_BITS = 0x7fffffff;
-        System.out.println((h ^ (h >>> 16)) & HASH_BITS);
+//        int h = myThread.hashCode();
+//        System.out.println(8 >>> 2);
+//        System.out.println(8 ^ 2);
+//        System.out.println(h);
+//        System.out.println(h >>> 16);
+//        System.out.println(h ^ (h >>> 16));
+//        int HASH_BITS = 0x7fffffff;
+//        System.out.println((h ^ (h >>> 16)) & HASH_BITS);
 //        int a = 0;
 //        int b = 1;
 //        int c = 2;
