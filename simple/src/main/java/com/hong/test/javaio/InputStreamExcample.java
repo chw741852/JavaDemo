@@ -12,7 +12,7 @@ import java.net.URLConnection;
 public class InputStreamExcample {
     public static void main(String[] args) {
         try {
-            URL url = new URL("http://key.sangotek.com/wifikey/tempauth?mac=aa&ssid=sss&bssid=c2:44:07:5c:67:12");
+            URL url = new URL("http://key.demo.com/abc/tempauth?mac=aa&ssid=sss&bssid=c2:44:07:5c:67:12");
             URLConnection urlConnection = url.openConnection();
             InputStream inputStream = urlConnection.getInputStream();
             int data = inputStream.read();
