@@ -20,7 +20,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <cglib_version>2.2.2</cglib_version>
-        <junit_version>4.12</junit_version>
+        <junit_version>4.13.1</junit_version>
         <spring_version>2.5.6.SEC03</spring_version>
         <log4j.version>2.5</log4j.version>
         <netty.version>4.1.16.Final</netty.version>
